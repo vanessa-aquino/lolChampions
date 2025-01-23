@@ -3,7 +3,7 @@
 
   <!-- Lista de campeões -->
   <div class="champions-list">
-    <div *ngFor="let champion of champions" class="champion-card">
+    <div *ngFor="let champion of displayedChampions" class="champion-card">
       <h2>{{ champion.name }}</h2>
       <p>{{ champion.title }}</p>
       <img
@@ -12,8 +12,20 @@
       />
       <span>{{ champion.tags }}</span>
       <p>{{ champion.blurb }}</p>
+      <button (click)="selectChampion(champion.id)">Ver mais</button>
     </div>
   </div>
+  </div>
+
+  <div>
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Página Anterior</button>
+    <button (click)="goToNextPage()" [disabled]="currentPage * championsPerPage >= champions.length">Próxima página</button>
+  </div>
+
+  <div *ngIf="selectedChampion">
+    <h2>{{ selectedChampion.name }}</h2>
+    <p>{{ selectedChampion.title }}</p>
+    <p>{{ selectedChampion.lore }}</p>
   </div>
 
 
