@@ -1,0 +1,19 @@
+<div class="champions-container">
+  <h1>Campeões de League of Legends</h1>
+
+  <!-- Lista de campeões -->
+  <div class="champions-list">
+    <div *ngFor="let champion of champions" class="champion-card">
+      <h2>{{ champion.name }}</h2>
+      <p>{{ champion.title }}</p>
+      <img
+        [src]="'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + champion.id + '_0.jpg'"
+        alt="{{ champion.name }}"
+      />
+      <span>{{ champion.tags }}</span>
+      <p>{{ champion.blurb }}</p>
+    </div>
+  </div>
+  </div>
+
+
