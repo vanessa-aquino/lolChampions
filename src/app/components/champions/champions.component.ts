@@ -14,6 +14,7 @@ export class ChampionsComponent implements OnInit {
   selectedChampion: any = null;
   currentPage: number = 1;
   championsPerPage: number = 10;
+  lore: string | null = null;
 
   constructor(private championsService: ChampionsService) {};
 
@@ -22,13 +23,13 @@ export class ChampionsComponent implements OnInit {
       next: (data) => {
         this.champions = Object.values(data.data);
         this.loadChampionsForCurrentPage();
-      }, 
+      },
       error: (err) => {
         console.error('Erro ao carregar campeões', err);
-      }, 
+      },
     });
   }
-  
+
   loadChampionsForCurrentPage(): void {
     const start = (this.currentPage - 1) * this.championsPerPage;
     const end = start + this.championsPerPage;
@@ -49,12 +50,20 @@ export class ChampionsComponent implements OnInit {
     }
   }
 
-  selectChampion(championName: string) {
+
+  selectChampion(championName: string): void {
     this.championsService.getChampionsByName(championName).subscribe(data => {
       this.selectedChampion = data.data[championName];
       console.log(this.selectedChampion);
+      this.getLore(championName);
     })
   }
 
+  getLore(championName: string): void {
+    if(this.selectedChampion) {
+      this.lore = this.selectedChampion.lore;
+      console.log('Lore do campião', this.lore);
+    }
+  }
 
 }

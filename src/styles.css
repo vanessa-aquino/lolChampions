@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: ease-in-out;
+}
+
+body {
+  background-image: url(./app/assets/img/bg-runiterra.webp);
+  background-repeat: no-repeat;
+
+}
+
+.image-champions {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.champions-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  justify-items: center;
+  align-items: center;
+  perspective: 600px;
+}
+
+.champion-card {
+  border: 4px solid rebeccapurple;
+  width: 250px;
+  height: 380px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  transform-origin: center;
+}
+
+.card-face {
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  position: absolute;
+  cursor: pointer;
+}
+
+.card-front > h2 {
+  border: 2px solid rgb(212, 59, 154);
+  position: absolute;
+  color: wheat;
+  text-align: center;
+  width: 100%;
+  text-transform: capitalize;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.card-front:hover > h2 {
+  opacity: 10;
+}
+
+.card-back {
+  background-color: black;
+  color: white;
+  transform: rotateY(180deg);
+
+}
+
+.flipped {
+  border:4px solid green;
+  transform: rotateY(180deg);
+}
+
+
+
