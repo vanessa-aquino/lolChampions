@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ChampionsService } from '../../services/champions.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-champions',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './champions.component.html',
   styleUrl: './champions.component.css'
 })
@@ -15,6 +16,9 @@ export class ChampionsComponent implements OnInit {
   currentPage: number = 1;
   championsPerPage: number = 10;
   lore: string | null = null;
+  filterText: string = '';
+  filteredChampions: any[] = [];
+  noChampionsFound: boolean = false;
 
   constructor(private championsService: ChampionsService) {};
 
@@ -31,9 +35,10 @@ export class ChampionsComponent implements OnInit {
   }
 
   loadChampionsForCurrentPage(): void {
+    const championsToDisplay = this.filteredChampions.length > 0 ? this.filteredChampions : this.champions;
     const start = (this.currentPage - 1) * this.championsPerPage;
     const end = start + this.championsPerPage;
-    this.displayedChampions = this.champions.slice(start, end);
+    this.displayedChampions = championsToDisplay.slice(start, end);
   };
 
   goToNextPage(): void {
@@ -52,18 +57,28 @@ export class ChampionsComponent implements OnInit {
 
 
   selectChampion(championName: string): void {
+    if(this.selectedChampion && this.selectedChampion.id === championName) {
+      this.selectedChampion = null;
+      this.lore = null;
+      return;
+    };
     this.championsService.getChampionsByName(championName).subscribe(data => {
       this.selectedChampion = data.data[championName];
-      console.log(this.selectedChampion);
-      this.getLore(championName);
+      this.getLore();
     })
   }
 
-  getLore(championName: string): void {
+  getLore(): void {
     if(this.selectedChampion) {
       this.lore = this.selectedChampion.lore;
-      console.log('Lore do campião', this.lore);
     }
   }
+
+  filterChampions(): void {
+    const lowerCaseFilter = this.filterText.toLowerCase();
+    this.displayedChampions = this.champions.filter((champion) => 
+    champion.name.toLowerCase().includes(lowerCaseFilter));
+    this.noChampionsFound = this.displayedChampions.length === 0;
+  };
 
 }
