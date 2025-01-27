@@ -5,24 +5,25 @@
   <div class="champions-list">
     <div *ngFor="let champion of displayedChampions" class="champion-card" [ngClass]="{'flipped': selectedChampion && selectedChampion.id === champion.id}" (click)="selectChampion(champion.id)">
       <!-- Frente do card -->
-       <div class="card-face card-front">
-         <h2>{{ champion.name}} - {{champion.title}}</h2>
+      <div class="card-face card-front">
+        <h2>{{ champion.name}} - {{champion.title}}</h2>
+        <span>Ver a Lore</span>
          <img
-           [src]="'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + champion.id + '_0.jpg'"
-           alt="{{ champion.name }}"
-           class="image-champions"
+         [src]="'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + champion.id + '_0.jpg'"
+         alt="{{ champion.name }}"
+         class="image-champions"
          />
-       </div>
+        </div>
        <!-- Verso do card -->
        <div class="card-face card-back">
-        <h2>{{ selectedChampion.name }}</h2>
+        <h2>{{ selectedChampion?.name }}</h2>
         <p>{{ lore }}</p>
       </div>
     </div>
   </div>
   </div>
 
-  <div>
+  <div class="buttons">
     <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Página Anterior</button>
     <button (click)="goToNextPage()" [disabled]="currentPage * championsPerPage >= champions.length">Próxima página</button>
   </div>

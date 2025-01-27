@@ -1,20 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   transition: ease-in-out;
+  font-family: 'Roboto', sans-serif, Arial, Helvetica;
 }
 
 body {
   background-image: url(./app/assets/img/bg-runiterra.webp);
   background-repeat: no-repeat;
+  padding: 10px;
+  color: #C28F2C;
+  position: relative;
+}
 
+body::before,
+.card-back::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+h1 {
+  font-size: 3.5rem;
+  padding: 10px;
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 10px;
 }
 
 .image-champions {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .champions-list {
@@ -27,13 +53,14 @@ body {
 }
 
 .champion-card {
-  border: 4px solid rebeccapurple;
   width: 250px;
   height: 380px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1s;
   transform-origin: center;
+  border: 2px solid #C28F2C;
+  border-radius: 8px;
 }
 
 .card-face {
@@ -44,15 +71,28 @@ body {
   cursor: pointer;
 }
 
-.card-front > h2 {
-  border: 2px solid rgb(212, 59, 154);
+.card-front > h2,
+.card-front > span {
   position: absolute;
-  color: wheat;
   text-align: center;
   width: 100%;
   text-transform: capitalize;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+  padding: 10px;
+  box-shadow: 0px -1px 41px 0px rgba(0,0,0,0.75) inset;
+  -webkit-box-shadow: 0px -1px 41px 0px rgba(0,0,0,0.75) inset;
+  -moz-box-shadow: 0px -1px 41px 0px rgba(0,0,0,0.75) inset;
+  color: #ffffff;
+  font-weight: 900;
+  border-radius: 8px;
+}
+
+.card-front > span {
+  opacity: 10;
+  text-transform: uppercase;
+  height: 40px;
+  top: 90%;
 }
 
 .card-front:hover > h2 {
@@ -60,16 +100,51 @@ body {
 }
 
 .card-back {
-  background-color: black;
-  color: white;
+  border-radius: 8px;
+  background-image: url(./app/assets/img/bg-runiterra.webp);
+  background-position: center center;
+  color: #ffffff;
   transform: rotateY(180deg);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
+.card-back > h2 {
+  font-size: 1.5rem;
+}
+
+.card-back > p {
+  font-size: 0.8rem;
+  line-height: 15px;
 }
 
 .flipped {
-  border:4px solid green;
   transform: rotateY(180deg);
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
 
+button {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #C28F2C;
+  border: 1px solid #ffffff;
+  text-transform: uppercase;
+  color: #0e0e0e;
+  font-weight: 400;
+}
+
+button:hover {
+  background-color: #cf9d3a;
+}
 
