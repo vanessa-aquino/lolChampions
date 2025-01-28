@@ -13,10 +13,11 @@ body {
   padding: 10px;
   color: #C28F2C;
   position: relative;
+  height: auto;
 }
 
-body::before,
-.card-back::before {
+.card-back::before,
+html::before {
   content: '';
   position: absolute;
   top: 0;
@@ -27,12 +28,37 @@ body::before,
   z-index: -1;
 }
 
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  position: relative;
+}
+
 h1 {
-  font-size: 3.5rem;
-  padding: 10px;
+  font-size: 3rem;
   text-align: center;
   font-weight: 800;
   margin-bottom: 10px;
+}
+
+.filter-input {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px;
+  background: none;
+  border: 2px solid #C28F2C;
+  text-transform: uppercase;
+  color: #C28F2C;
+  width: 200px;
+}
+
+.clear {
+  position: absolute;
+  right: 20px;
+  bottom: 25px;
+  cursor: pointer;
 }
 
 .image-champions {
@@ -123,6 +149,13 @@ h1 {
   transform: rotateY(180deg);
 }
 
+.no-champions-message {
+  padding: 20px 0;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -145,5 +178,9 @@ button {
 
 button:hover {
   background-color: #cf9d3a;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
 }
 

@@ -76,9 +76,22 @@ export class ChampionsComponent implements OnInit {
 
   filterChampions(): void {
     const lowerCaseFilter = this.filterText.toLowerCase();
-    this.displayedChampions = this.champions.filter((champion) => 
-    champion.name.toLowerCase().includes(lowerCaseFilter));
-    this.noChampionsFound = this.displayedChampions.length === 0;
+    if(this.filterText.trim() === '') {
+      this.filteredChampions = [];
+      this.loadChampionsForCurrentPage();
+    } else {
+      this.filteredChampions = this.champions.filter((champion) =>
+        champion.name.toLowerCase().includes(lowerCaseFilter)
+      );
+      this.noChampionsFound = this.filteredChampions.length === 0;
+      this.displayedChampions = this.filteredChampions.slice(0, this.championsPerPage);
+    };
   };
+
+  clearSearch(): void {
+    this.filterText = '';
+    this.filterChampions();
+    this.noChampionsFound = false;
+  }
 
 }

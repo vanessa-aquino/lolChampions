@@ -1,27 +1,24 @@
 <div class="champions-container">
-  <h1>Campeões de League of Legends</h1>
-
-  <div class="search-bar">
-    <input
-      type="text"
-      placeholder="Pesquisar campeão..."
-      [(ngModel)]="filterText"
-      (input)="filterChampions()"
-      class="filter-input"
-    />
-  </div>
-
+  <header class="container-header">
+    <h1>Campeões de League of Legends</h1>
+    <div class="search-bar">
+      <input
+        type="text"
+        placeholder="Pesquisar campeão..."
+        [(ngModel)]="filterText"
+        (input)="filterChampions()"
+        class="filter-input"
+        />
+        <span class="clear" (click)="clearSearch()">X</span>
+    </div>
+  </header>
   <!-- Champion não encontrado -->
   <div *ngIf="noChampionsFound" class="no-champions-message">
     <h4>Nenhum campeão com esse nome encontrado.</h4>
   </div>
-
   <!-- Lista de campeões -->
   <div class="champions-list">
     <div *ngFor="let champion of displayedChampions" class="champion-card" [ngClass]="{'flipped': selectedChampion && selectedChampion.id === champion.id}" (click)="selectChampion(champion.id)">
-
-      <!-- Campeões pesquisados -->
-
       <!-- Frente do card -->
       <div class="card-face card-front">
         <h2>{{ champion.name}} - {{champion.title}}</h2>
@@ -40,8 +37,7 @@
     </div>
   </div>
   </div>
-
-  <div class="buttons">
+  <div class="buttons" *ngIf="!noChampionsFound">
     <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Página Anterior</button>
     <button (click)="goToNextPage()" [disabled]="currentPage * championsPerPage >= champions.length">Próxima página</button>
   </div>
