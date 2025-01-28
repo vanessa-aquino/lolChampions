@@ -1,59 +1,62 @@
-# LolChampions
+# League of Legends Champions Viewer 👾
+Este projeto é uma página que exibe informações sobre os campeões de League of Legends. O usuário pode pesquisar os campeões por nome e visualizar detalhes como a lore de cada um. 🏆🎮
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
 
-## Development server
+## Funcionalidades ⚙
 
-To start a local development server, run:
+- **Busca de Campeões:** O usuário pode digitar o nome de um campeão na barra de busca e os resultados são filtrados dinamicamente com base no termo de busca.
+- **Visualização de Lore:** Ao clicar no cartão de um campeão, o usuário pode visualizar a lore desse campeão. 
+## Tecnologias Utilizadas 🛠
 
-```bash
-ng serve
-```
+- **Angular:** Framework para construção de aplicações web.
+- **TypeScript:** Linguagem de programação usada.
+- **RxJS:** Framework para construção de aplicações web.
+- **HTTPClient:** Para fazer as requisições à API de League of Legends e buscar os campeões.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Rodando localmente 💻
 
-```bash
-ng generate --help
-```
+#### Pré-requisitos: 
+Certifique-se de ter o Node.js e o NPM instalados em sua máquina. Caso não tenha, faça o download em: https://nodejs.org
 
-## Building
+#### Passos:
 
-To build the project run:
+Clone o projeto
 
 ```bash
-ng build
+  git clone git@github.com:vanessa-aquino/lolChampions.git
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Entre no diretório do projeto
 
 ```bash
-ng test
+  cd lol-champions
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Instale as dependências
 
 ```bash
-ng e2e
+  npm install
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Inicie o servidor
 
-## Additional Resources
+```bash
+  ng serve
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Contribuições 🤝
+
+Contribuições são bem-vindas! Sinta-se à vontade para fazer um fork do projeto, criar uma branch e enviar um pull request com melhorias ou correções.
+
+
+## Contato 📬
+Você pode me encontrar no [linkedin](https://www.linkedin.com/in/vanessa-aquino-1b0b29289/) ou enviar um e-mail para [E-mail](mailto:vanessaquinoo@hotmail.com) Estou sempre aberta a discussões sobre desenvolvimento e aprendizado.
+
+## Link para o projeto 🎮
+🔗 https://lol-champions-lgjgh1zgk-vanessa-aquinos-projects.vercel.app
